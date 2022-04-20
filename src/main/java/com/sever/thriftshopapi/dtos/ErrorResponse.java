@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class FailResponse {
-    private final String message;
+public class ErrorResponse {
+    private final String error;
 }

@@ -2,8 +2,8 @@ package com.sever.thriftshopapi.controllers;
 
 import com.sever.thriftshopapi.dtos.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -11,6 +11,11 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("/goods")
 public class GoodsController {
+
+    @GetMapping("/health")
+    public HealthResponse getHeaders(@RequestHeader MultiValueMap<String, String> headers) {
+        return HealthResponse.builder().headers(headers).build();
+    }
 
     @GetMapping("/{id}")
     public GoodDto getById(@PathVariable("id") Long id) {
@@ -40,9 +45,4 @@ public class GoodsController {
         //todo check id exists
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public FailResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
-        return FailResponse.builder().message(exception.getMessage()).build();
-    }
 }

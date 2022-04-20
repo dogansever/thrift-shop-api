@@ -1,7 +1,6 @@
 package com.sever.thriftshopapi.dtos;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -9,6 +8,8 @@ import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 public class GoodDto {
 
     private GoodId id;
