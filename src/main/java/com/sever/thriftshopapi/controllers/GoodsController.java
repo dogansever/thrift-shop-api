@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/goods")
@@ -20,6 +21,11 @@ public class GoodsController {
     @GetMapping("/health")
     public HealthResponse getHeaders(@RequestHeader MultiValueMap<String, String> headers) {
         return HealthResponse.builder().headers(headers).build();
+    }
+
+    @GetMapping("")
+    public List<GoodDto> getAll(@RequestHeader MultiValueMap<String, String> headers) {
+        return goodService.getAll();
     }
 
     @GetMapping(value = "/{id}", produces = {"application/json", "application/xml"})

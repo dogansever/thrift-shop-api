@@ -1,0 +1,1 @@
+insert into goods (id,name, description) values(0,'button','a brown 4 hole button');
