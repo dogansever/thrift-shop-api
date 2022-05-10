@@ -8,4 +8,6 @@ public interface GoodService {
     Long create(GoodDto dto);
 
     List<GoodDto> getAll();
+
+    GoodDto getById(Long id);
 }
